@@ -10,7 +10,6 @@ The project is structured to be modular and easy to extend, with support for API
 After running the setup script, the following structure is created:
 
 <pre>
-``` 
 End-to-End-Medical-Chatbot-Generative-AI/
 │── src/
 │   ├── __init__.py        # Makes src a package
@@ -25,9 +24,7 @@ End-to-End-Medical-Chatbot-Generative-AI/
 │── .env                   # Environment variables (API keys, configs)
 │── requirements.txt       # Project dependencies
 │── README.md              # Project documentation
-│── LICENSE                # License information
-
-```
+│── LICENSE                # License information  
 </pre>
 
 ## ⚙️ Installation & Setup
