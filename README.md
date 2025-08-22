@@ -1,11 +1,11 @@
-## 🏥 Mediora – End-to-End Medical Chatbot (Generative AI)
+# 🏥 Mediora – End-to-End Medical Chatbot (Generative AI)
 📌 Project Overview
 
 Mediora is an end-to-end Generative AI-based medical chatbot.
 It uses LangChain, LLMs, and vector databases (like Pinecone) to provide contextual medical responses.
 The project is structured to be modular and easy to extend, with support for APIs, research notebooks, and environment configuration.
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 After running the setup script, the following structure is created:
 
@@ -25,7 +25,7 @@ End-to-End-Medical-Chatbot-Generative-AI/
 │── README.md              # Project documentation
 │── LICENSE                # License information
 
-⚙️ Installation & Setup
+## ⚙️ Installation & Setup
 1️⃣ Clone the Repository
 git clone https://github.com/<your-username>/End-to-End-Medical-Chatbot-Generative-AI.git
 cd End-to-End-Medical-Chatbot-Generative-AI
@@ -63,14 +63,14 @@ or
 
 http://127.0.0.1:8000/
 
-📒 Research & Experiments
+## 📒 Research & Experiments
 
 All Jupyter Notebook experiments are stored in the research/ folder.
 Run:
 
 jupyter notebook research/trials.ipynb
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 Python 3.10+
 
@@ -86,10 +86,15 @@ OpenAI GPT models (LLM integration)
 
 dotenv (environment variable management)
 
-📌 Future Improvements
+## 📌 Future Improvements
 
 Enhance UI with React/Streamlit frontend
 
 Add support for multimodal inputs (X-rays, PDFs)
 
 Integrate more medical datasets for fine-tuning
+
+## 📜 License
+
+This project is licensed under the MIT License – see the LICENSE
+ file for details.
