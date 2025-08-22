@@ -1,11 +1,11 @@
-🏥 Mediora – End-to-End Medical Chatbot (Generative AI)
+## 🏥 Mediora – End-to-End Medical Chatbot (Generative AI)
 📌 Project Overview
 
 Mediora is an end-to-end Generative AI-based medical chatbot.
 It uses LangChain, LLMs, and vector databases (like Pinecone) to provide contextual medical responses.
 The project is structured to be modular and easy to extend, with support for APIs, research notebooks, and environment configuration.
 
-📂 Project Structure
+# 📂 Project Structure
 
 After running the setup script, the following structure is created:
 
