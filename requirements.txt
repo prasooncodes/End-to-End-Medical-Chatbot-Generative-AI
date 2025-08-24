@@ -1,11 +1,18 @@
 sentence-transformers==2.2.2
-langchain
 flask
 pypdf
 python-dotenv
-pinecone[grpc]
+
+# LangChain core + integrations
+langchain
+langchain-community
+langchain-experimental
+langchain-openai
 langchain-pinecone
-langchain_community
-langchain_openai
-langchain_experimental
+langchain-google-genai   # 🔹 Needed for ChatGoogleGenerativeAI
+
+# Pinecone client
+pinecone-client[grpc]
+
+# For local package development
 -e .
