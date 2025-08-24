@@ -28,6 +28,24 @@
       justify-content: center;
     }
 
+    /* Interactive background layer */
+    .fx-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(
+        400px 400px at var(--fx-x, 50%) var(--fx-y, 50%),
+        rgba(63, 81, 181, 0.18),
+        rgba(33, 150, 243, 0.10) 30%,
+        rgba(187, 222, 251, 0.06) 55%,
+        rgba(255, 255, 255, 0.0) 70%
+      );
+      transition: opacity .25s ease;
+    }
+
+    .fx-layer.dimmed { opacity: .25; }
+
     .chat-container {
       width: 380px;
       height: 550px; /* constant size */
@@ -37,6 +55,8 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     /* Header */
@@ -151,6 +171,7 @@
 </head>
 
 <body>
+  <div id="fxLayer" class="fx-layer"></div>
   <div class="chat-container">
     <!-- Header -->
     <div class="chat-header">
@@ -267,6 +288,20 @@
           hideTyping();
         });
       });
+
+      // Mouse-follow background effect
+      const fxLayer = document.getElementById('fxLayer');
+      window.addEventListener('mousemove', (e) => {
+        // Normalize to viewport
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        fxLayer.style.setProperty('--fx-x', x + '%');
+        fxLayer.style.setProperty('--fx-y', y + '%');
+      });
+
+      const chat = document.querySelector('.chat-container');
+      chat.addEventListener('mouseenter', () => fxLayer.classList.add('dimmed'));
+      chat.addEventListener('mouseleave', () => fxLayer.classList.remove('dimmed'));
     });
   </script>
 </body>
