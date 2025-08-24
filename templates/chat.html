@@ -15,6 +15,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/style.css">
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -159,8 +161,14 @@
       </div>
     </div>
 
+    <!-- Optional welcome banner (injected via JS) -->
+    <div id="welcomeBanner" class="welcome-banner" style="display:none"></div>
+
     <!-- Chat Body -->
     <div id="chatBody" class="chat-body"></div>
+
+    <!-- Suggestion chips -->
+    <div id="suggestionChips" class="chips" style="display:none"></div>
 
     <!-- Footer -->
     <div class="chat-footer">
@@ -189,6 +197,37 @@
         </div>`;
       $("#chatBody").append(greetingHtml);
 
+      // Welcome banner and chips
+      const tips = [
+        "What are common cold symptoms?",
+        "How to manage diabetes?",
+        "Explain BMI and healthy range",
+        "When to see a doctor?"
+      ];
+
+      $("#welcomeBanner").html("Welcome to MediOra. Ask me anything about health!").fadeIn(150);
+      const chipsHtml = tips.map(t => `<button class="chip" type="button" data-text="${t}">${t}</button>`).join("");
+      $("#suggestionChips").html(chipsHtml).fadeIn(150);
+
+      $(document).on("click", ".chip", function() {
+        const text = $(this).data("text");
+        $("#text").val(text);
+        $("#messageArea").trigger("submit");
+      });
+
+      function showTyping() {
+        const typing = `
+          <div id="typingRow" class="msg-bubble msg-bot">
+            <span class="typing"><span></span><span></span><span></span></span>
+          </div>`;
+        $("#chatBody").append(typing);
+        $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);
+      }
+
+      function hideTyping() {
+        $("#typingRow").remove();
+      }
+
       // Handle form submit
       $("#messageArea").on("submit", function(event) {
         event.preventDefault();
@@ -207,12 +246,16 @@
         $("#chatBody").append(userHtml);
         $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);
 
+        // Typing indicator
+        showTyping();
+
         // Bot response
         $.ajax({
           data: { msg: rawText },
           type: "POST",
           url: "/get",
         }).done(function(data) {
+          hideTyping();
           var botHtml = `
             <div class="msg-bubble msg-bot">
               ${data}
@@ -220,6 +263,8 @@
             </div>`;
           $("#chatBody").append(botHtml);
           $("#chatBody").scrollTop($("#chatBody")[0].scrollHeight);
+        }).fail(function() {
+          hideTyping();
         });
       });
     });
