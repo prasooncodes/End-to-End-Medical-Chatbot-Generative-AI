@@ -1,102 +1,42 @@
-# 🏥 Mediora – End-to-End Medical Chatbot (Generative AI)
-## 📌 Project Overview
+# 🩺 End-to-End Medical Chatbot (Generative AI)
 
-Mediora is an end-to-end Generative AI-based medical chatbot.
-It uses LangChain, LLMs, and vector databases (like Pinecone) to provide contextual medical responses.
-The project is structured to be modular and easy to extend, with support for APIs, research notebooks, and environment configuration.
+An AI-powered medical chatbot built using Google Gemini 1.5 Pro, Pinecone Vector Store, HuggingFace Embeddings, and Flask.  
+The chatbot can answer medical-related queries based on your custom knowledge base with Retrieval-Augmented Generation (RAG).  
+Includes a simple chat UI for seamless interaction.  
 
-## 📂 Project Structure
+## ✨ Features
+- 🔹 Gemini 1.5 Pro as the LLM for accurate, context-aware responses  
+- 🔹 Pinecone Vector Store for semantic search & retrieval  
+- 🔹 HuggingFace sentence-transformers embeddings  
+- 🔹 Flask backend with REST endpoints  
+- 🔹 Simple chat UI (HTML/CSS/JS) for user interaction  
+- 🔹 End-to-End RAG pipeline (Retriever + LLM)  
 
-After running the setup script, the following structure is created:
+## 🛠️ Tech Stack
+- Python 3.9+  
+- Flask (backend & API)  
+- LangChain (RAG framework)  
+- Pinecone (vector database)  
+- HuggingFace (sentence-transformers/all-MiniLM-L6-v2 for embeddings)  
+- Gemini 1.5 Pro (via Google Generative AI API)  
+- HTML/CSS/JavaScript (UI)  
 
-<pre>
-End-to-End-Medical-Chatbot-Generative-AI/
-│── src/
-│   ├── __init__.py        # Makes src a package
-│   ├── helper.py          # Utility/helper functions
-│   ├── prompt.py          # Prompt templates for chatbot
-│
-│── research/
-│   ├── trials.ipynb       # Jupyter notebook for experiments
-│
-│── app.py                 # Main entry point for chatbot app
-│── setup.py               # Setup script for packaging
-│── .env                   # Environment variables (API keys, configs)
-│── requirements.txt       # Project dependencies
-│── README.md              # Project documentation
-│── LICENSE                # License information  
-</pre>
-
-## ⚙️ Installation & Setup
-1️⃣ Clone the Repository
+## ⚙️ Setup Instructions
+```bash
+# 1️⃣ Clone repository
 git clone https://github.com/<your-username>/End-to-End-Medical-Chatbot-Generative-AI.git
 cd End-to-End-Medical-Chatbot-Generative-AI
 
-2️⃣ Create and Activate Conda Environment
-conda create -n mediora python=3.10 -y
+# 2️⃣ Create virtual environment
+conda create -n mediora python=3.9 -y
 conda activate mediora
 
-3️⃣ Install Dependencies
+# 3️⃣ Install dependencies
 pip install -r requirements.txt
 
-4️⃣ Setup Environment Variables
+# 4️⃣ Create .env file (add your API keys)
+echo "GOOGLE_API_KEY=your_google_gemini_api_key" >> .env
+echo "PINECONE_API_KEY=your_pinecone_api_key" >> .env
 
-Create a .env file in the project root and add:
-
-OPENAI_API_KEY=your_openai_api_key
-PINECONE_API_KEY=your_pinecone_api_key
-
-
-(You can add other keys/configs as needed.)
-
-🚀 Running the Project
-
-Start the chatbot app:
-
+# 5️⃣ Start Flask server
 python app.py
-
-
-If Flask/FastAPI is used, the API will be available at:
-
-http://127.0.0.1:5000/
-
-
-or
-
-http://127.0.0.1:8000/
-
-## 📒 Research & Experiments
-
-All Jupyter Notebook experiments are stored in the research/ folder.
-Run:
-
-jupyter notebook research/trials.ipynb
-
-## 🛠️ Tech Stack
-
-Python 3.10+
-
-LangChain (conversation orchestration)
-
-Sentence Transformers (embeddings)
-
-Flask / FastAPI (backend API)
-
-Pinecone (vector database for retrieval)
-
-OpenAI GPT models (LLM integration)
-
-dotenv (environment variable management)
-
-## 📌 Future Improvements
-
-Enhance UI with React/Streamlit frontend
-
-Add support for multimodal inputs (X-rays, PDFs)
-
-Integrate more medical datasets for fine-tuning
-
-## 📜 License
-
-This project is licensed under the MIT License – see the LICENSE
- file for details.
